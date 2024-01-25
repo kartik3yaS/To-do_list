@@ -1,10 +1,24 @@
-import { FaThumbsUp } from "react-icons/fa";
+const Header = ({length, count, setCount}) => {
+    function func() {
+        const percentage = (count/length) * 100;
+        if(percentage===0)
+        {
+            return 'Try to do at least one! 🙏';
+        }else if(percentage===100)
+        {
+            return 'Nice job for today! 🏝';
+        }else
+        {
+            return 'Keep it going 💪🏻';
+        }
+    }
 
-const Header = ({length}) => {
     return(
         <div className="header">
-            <div className="h-up">{length} {length==1 ? "task": "tasks"} remaining</div>
-            <div className="h-down">{length==0 ? "Nice job for today!": "Keep it going"} <FaThumbsUp /></div>
+            <div className="h-up">{count}/{length} Complete</div>
+            <div className="h-down">
+                <h2>{func()}</h2>
+            </div>
         </div>
     )
 }
